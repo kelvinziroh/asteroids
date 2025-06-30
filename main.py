@@ -17,6 +17,11 @@ def main():
         screen.fill("black")
         pygame.display.flip()
 
+        # Exit game loop once user closes the game window
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                return
+
 if __name__ == "__main__":
     main()
 
