@@ -1,6 +1,7 @@
 # Import necessary modules
 import pygame
 from constants import *
+from player import Player
 
 def main():
     # Initialize pygame
@@ -18,9 +19,13 @@ def main():
     # Initialize a variable to 0
     dt = 0
     
+    # Instantiate a player object
+    player_obj = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+    
     # Create a basic game loop
     while True:
         screen.fill("black")
+        player_obj.draw(screen) # Render player on screen
         pygame.display.flip()
 
         # Limit the program's fps to 60 and record the delta 
