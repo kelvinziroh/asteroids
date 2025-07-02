@@ -6,9 +6,6 @@ from player import Player
 def main():
     # Initialize pygame
     pygame.init()
-    # print("Starting Asteroids!")
-    # print(f"Screen width: {SCREEN_WIDTH}")
-    # print(f"Screen height: {SCREEN_HEIGHT}")
 
     # Get a new GUI window
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
@@ -20,22 +17,24 @@ def main():
     dt = 0
     
     # Instantiate a player object
-    player_obj = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+    player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
     
     # Create a basic game loop
     while True:
+        # Exit game loop once user closes the game window
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                return
+        
         screen.fill("black")
-        player_obj.draw(screen) # Render player on screen
+        player.update(dt) # Turn the player left or right
+        player.draw(screen) # Render player on screen
         pygame.display.flip()
 
         # Limit the program's fps to 60 and record the delta 
         # time in seconds
         dt = clock.tick(60) / 1000
         
-        # Exit game loop once user closes the game window
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                return
 
 if __name__ == "__main__":
     main()
