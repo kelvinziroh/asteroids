@@ -16,6 +16,13 @@ def main():
     # Initialize a variable to 0
     dt = 0
     
+    # Create groups to manage multiple objects
+    updatable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+    
+    # Set both groups as containers for the Player class
+    Player.containers = (updatable, drawable)
+    
     # Instantiate a player object
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
     
@@ -27,8 +34,9 @@ def main():
                 return
         
         screen.fill("black")
-        player.update(dt) # Turn the player left or right
-        player.draw(screen) # Render player on screen
+        updatable.update(dt) # Turn the player left or right
+        for i in drawable:
+            i.draw(screen) # Render each projects on the screen
         pygame.display.flip()
 
         # Limit the program's fps to 60 and record the delta 
