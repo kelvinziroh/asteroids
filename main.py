@@ -1,5 +1,6 @@
 # Import necessary modules
 import pygame
+import sys
 from constants import *
 from player import Player
 from asteroid import Asteroid
@@ -41,6 +42,12 @@ def main():
         
         screen.fill("black")
         updatable.update(dt) # Turn the player left or right
+        
+        # Exit program if any asteroid obj collide with player
+        for i in asteroids:
+            if i.collide(player):
+                sys.exit("Game over!")
+
         for i in drawable:
             i.draw(screen) # Render each projects on the screen
         pygame.display.flip()
