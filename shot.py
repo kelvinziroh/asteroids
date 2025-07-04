@@ -2,11 +2,11 @@ import pygame
 from circleshape import CircleShape
 from constants import *
 
-class Asteroid(CircleShape):
-    def __init__(self, x, y, radius):
-        super().__init__(x, y, radius)
+class Shot(CircleShape):
+    def __init__(self, x, y):
+        super().__init__(x, y, SHOT_RADIUS)
     
-    # Override the draw method from parent class to draw the asteroid
+    # Override the draw method from parent class to draw the shot
     def draw(self, screen):
         pygame.draw.circle(
             screen,

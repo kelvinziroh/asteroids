@@ -4,6 +4,7 @@ import sys
 from constants import *
 from player import Player
 from asteroid import Asteroid
+from shot import Shot
 from asteroidsfield import AsteroidField
 
 def main():
@@ -23,10 +24,12 @@ def main():
     updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
     asteroids = pygame.sprite.Group()
+    shots = pygame.sprite.Group()
     
-    # Set both groups as containers for the Player class
+    # Set groups as containers for the program's classes
     Player.containers = (updatable, drawable)
     Asteroid.containers = (asteroids, updatable, drawable)
+    Shot.containers = (shots, updatable, drawable)
     AsteroidField.containers = (updatable)
     
     # Instantiate a player object
@@ -41,7 +44,7 @@ def main():
                 return
         
         screen.fill("black")
-        updatable.update(dt) # Turn the player left or right
+        updatable.update(dt)
         
         # Exit program if any asteroid obj collide with player
         for i in asteroids:
@@ -49,7 +52,7 @@ def main():
                 sys.exit("Game over!")
 
         for i in drawable:
-            i.draw(screen) # Render each projects on the screen
+            i.draw(screen) # Render each object on the screen
         pygame.display.flip()
 
         # Limit the program's fps to 60 and record the delta 
