@@ -47,9 +47,15 @@ def main():
         updatable.update(dt)
         
         # Exit program if any asteroid obj collide with player
-        for i in asteroids:
-            if i.collide(player):
+        for asteroid in asteroids:
+            if asteroid.collides_with(player):
                 sys.exit("Game over!")
+            
+            # Destroy asteroids on collision with shots
+            for shot in shots:
+                if asteroid.collides_with(shot):
+                    asteroid.kill()
+                    shot.kill()
 
         for i in drawable:
             i.draw(screen) # Render each object on the screen
