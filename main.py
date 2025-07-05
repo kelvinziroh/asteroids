@@ -17,7 +17,7 @@ def main():
     # Create a clock object
     clock = pygame.time.Clock()
     
-    # Initialize a variable to 0
+    # Initialize delta time variable to 0
     dt = 0
     
     # Create groups to manage multiple objects
