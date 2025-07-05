@@ -1,5 +1,6 @@
 # Import necessary modules
 import pygame
+import sys
 from circleshape import CircleShape
 from shot import Shot
 from constants import *
@@ -30,13 +31,15 @@ class Player(CircleShape):
     def update(self, dt):
         keys = pygame.key.get_pressed()
 
-        if keys[pygame.K_w]:
+        if keys[pygame.K_ESCAPE]:
+            sys.exit() # Exit the game when the player hits ESC button
+        if keys[pygame.K_w] or keys[pygame.K_UP]:
             self.move(dt) # move the player forward
-        if keys[pygame.K_s]:
+        if keys[pygame.K_s] or keys[pygame.K_DOWN]:
             self.move(-dt) # move the player backward
-        if keys[pygame.K_a]:
+        if keys[pygame.K_a] or keys[pygame.K_LEFT]:
             self.rotate(-dt) # turn the player left
-        if keys[pygame.K_d]:
+        if keys[pygame.K_d] or keys[pygame.K_RIGHT]:
             self.rotate(dt) # turn the player right
         if keys[pygame.K_SPACE]:
             if self.shot_timer <= 0: # Rate limit the player's shots

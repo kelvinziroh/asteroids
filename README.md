@@ -62,10 +62,17 @@ uv run main.py
 ```
 
 ## 🎮 Controls
-- ← / →: Rotate ship
-- ↑: Thrust forward
-- Space: Fire bullet
-- Esc: Quit game
+- **Right-handed convinent controls**
+    - ← / →: Rotate ship
+    - ↑ / ↓: Thrust forward or backward
+
+- **Left-handed convinient controls**
+    - A / D: Rotate ship
+    - W / S: Thrust forward or backward
+
+- **General/Universal controls**
+    - Space: Fire bullet
+    - Esc: Quit game
 
 ## 💡 Notes
 - This implementation is intentionally simple and modular for learning purposes.
