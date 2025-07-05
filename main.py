@@ -54,7 +54,7 @@ def main():
             # Destroy asteroids on collision with shots
             for shot in shots:
                 if asteroid.collides_with(shot):
-                    asteroid.kill()
+                    asteroid.split()
                     shot.kill()
 
         for i in drawable:
